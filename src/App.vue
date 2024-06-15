@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import TestView from "./components/TestView.vue";
 const msg = 'Hello'
 const rawHTML = 'V-html HTML attribute binding'
@@ -7,7 +7,7 @@ const countNum = 0
 const count = 'countId'
 const imagUrl = require('../public/image.jpg')
 const style = 'font-size:25px;'
-const isTrue = ref(false)
+const isTrue = ref(true)
 const obj = {
   id: "div-container",
   style: "border: 1px solid black; border-radius:50%; background-color:teal; width:100px; height:100px; margin:auto;  "
@@ -19,9 +19,11 @@ const text = ref(null)
 
 const onLoad = ()=>{
     text.value.focus()
+    console.log("On Mounted hook called!!!");
 }
 
 onMounted(onLoad)
+
 </script>
 
 <template>
@@ -62,7 +64,7 @@ onMounted(onLoad)
   <input ref="text" >
   <br>
   <br>
-  <TestView />
+  <TestView v-if="isTrue"></TestView>
 </template>
 
 <style>
