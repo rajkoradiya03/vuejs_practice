@@ -2,7 +2,13 @@
 import { onUpdated,onUnmounted, ref, onBeforeMount, onMounted, onBeforeUpdate, onBeforeUnmount } from 'vue';
 
 const msg = ref('')
-const count = ref(0)
+
+// state
+let count = ref(0)
+
+function increse(){
+  count.value++;
+}
 
 onUpdated(()=>{
   console.log("On Updated hook called!!");
@@ -35,7 +41,7 @@ onBeforeUpdate(()=>{
   <input type="text" name="msg" id="msg" v-model="msg">
   <p>{{ msg }}</p>
 
-  <button @click="count++">count: {{ count }}</button>
+  <button @click="increse()">count: {{ count }}</button>
 </template>
 
 <!-- <style lang="scss" scoped></style> -->

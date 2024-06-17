@@ -1,6 +1,8 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from "vue";
 import TestView from "./components/TestView.vue";
+import CountFirst from './components/CountFirst.vue'
+import CountSecond from './components/CountSecond.vue'
 const msg = 'Hello'
 const rawHTML = 'V-html HTML attribute binding'
 const countNum = 0
@@ -65,6 +67,12 @@ onMounted(onLoad)
   <br>
   <br>
   <TestView v-if="isTrue"></TestView>
+
+  <br>
+  <br>
+  <CountFirst />
+  <CountSecond />
+  
 </template>
 
 <style>
