@@ -2,9 +2,11 @@
 import { onUpdated,onUnmounted, ref, onBeforeMount, onMounted, onBeforeUpdate, onBeforeUnmount } from 'vue';
 
 const msg = ref('')
+console.log("API call!!");
 
 // state
 let count = ref(0)
+
 
 function increse(){
   count.value++;

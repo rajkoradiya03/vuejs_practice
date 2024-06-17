@@ -3,7 +3,6 @@ import { useCount } from './count'
 
 function increse(){
   useCount().localCount.value++
-  console.log(useCount().localCount.value);
 }
 </script>
 <template>
