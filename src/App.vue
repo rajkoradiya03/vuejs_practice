@@ -8,6 +8,9 @@ import RefReactive from './components/RefReactive.vue'
 import ClassAndStyle from './components/ClassAndStyle.vue'
 import EventView from "./components/EventView.vue";
 import ToDoView from './components/ToDoView.vue'
+import ComputedView from './components/ComputedView.vue'
+import WatcherView from './components/WatcherView.vue'
+import WatcherAndWatcheffect from './components/WatcherAndWatcheffect.vue'
 const msg = 'Hello'
 const rawHTML = 'V-html HTML attribute binding'
 const countNum = 0
@@ -112,6 +115,7 @@ function addTodo(){
   <br>
   <hr>
 
+  <!-- simple todo -->
   <div>
     <form @submit.prevent="addTodo">
       <label for="todo">ToDo :</label>
@@ -128,6 +132,18 @@ function addTodo(){
       ></to-do-view>
     </ul>
   </div>
+  <!-- Computed Properties -->
+
+   <ComputedView />
+
+   <!-- Watchers -->
+
+    <WatcherView />
+
+    <br>
+    <br>
+    <hr>
+    <WatcherAndWatcheffect />
 </template>
 
 <style>

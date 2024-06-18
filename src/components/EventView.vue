@@ -11,6 +11,10 @@ function warn(message, event) {
 function onSubmit(){
   alert('submited!!')
 }
+
+function onClick(event){
+  alert(event.target.tagName)
+}
 </script>
 <template>
   <div>
@@ -26,6 +30,12 @@ function onSubmit(){
     </button>
 
     <button @click.middle="onSubmit()" >ABC</button>
+  </div>
+
+  <div style="height: 100px; width: 100px; background-color: aqua;"  @click.capture="onClick($event)">
+    <p style="height: 80px; width: 80px; background-color: red;" >
+      <button  style=" width: fit-content; height: fit-content;" @click="onSubmit()">click</button>
+    </p>
   </div>
 </template>
 
