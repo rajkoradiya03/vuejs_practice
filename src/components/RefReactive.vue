@@ -12,9 +12,12 @@ watch(user, ()=>{
 const increse = ()=> {user.value.count++}
 </script>
 <template>
-  <div>
+  <div class="general-container">
+    RefReactive View 
+    <br>
+
     <button @click="increse">{{ user.count }}</button>
   </div>
 </template>
 
-<style scoped></style>
+

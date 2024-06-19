@@ -28,23 +28,27 @@ const userDetails = reactive({
 })
 </script>
 <template>
-  <div>
-    <p v-for="(user) in users" :key="user">{{ user }}</p>
-    <button @click="addUser">ADD</button>
-    <button @click="removeUser()">REMOVE</button>
-  </div>
-
-  <br>
-  <br>
-
-  <div>
-    <li v-for="n of evenNum" :key="n">{{ n }}</li>
-  </div>
-  <br>
-  <br>
-  <div>
-    <li v-for="(user, key) in userDetails" :key="user.name">{{ key }} : {{ user }}</li>
+  <div class="general-container">
+    user view 
+    <br>
+    <div>
+      <p v-for="(user) in users" :key="user">{{ user }}</p>
+      <button @click="addUser">ADD</button>
+      <button @click="removeUser()">REMOVE</button>
+    </div>
+  
+    <br>
+    <br>
+  
+    <div>
+      <li v-for="n of evenNum" :key="n">{{ n }}</li>
+    </div>
+    <br>
+    <br>
+    <div>
+      <li v-for="(user, key) in userDetails" :key="user.name">{{ key }} : {{ user }}</li>
+    </div>
   </div>
 </template>
 
-<style scoped></style>
+

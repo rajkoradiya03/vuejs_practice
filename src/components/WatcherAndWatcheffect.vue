@@ -26,8 +26,12 @@ watch(count, (newValue, oldValue) => {
 </script>
 
 <template>
-  <main>
+  <main class="general-container">
+    watcher and watchereffect difference view
+    <br>
       {{ product.price }} = {{ product.quantity }} * 10
       <input v-model="product.quantity" type="number" />
   </main>
 </template>
+
+

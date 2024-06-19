@@ -17,7 +17,9 @@ function onClick(event){
 }
 </script>
 <template>
-  <div>
+  <div class="general-container">
+    Event View
+    <br>
     <!-- using $event special variable -->
     <button @click="warn('Form cannot be submitted yet.', $event)">
       Submit
@@ -30,13 +32,12 @@ function onClick(event){
     </button>
 
     <button @click.middle="onSubmit()" >ABC</button>
+    <div style="height: 100px; width: 100px; background-color: aqua;"  @click.capture="onClick($event)">
+      <p style="height: 80px; width: 80px; background-color: red;" >
+        <button  style=" width: fit-content; height: fit-content;" @click="onSubmit()">click</button>
+      </p>
+    </div>
   </div>
 
-  <div style="height: 100px; width: 100px; background-color: aqua;"  @click.capture="onClick($event)">
-    <p style="height: 80px; width: 80px; background-color: red;" >
-      <button  style=" width: fit-content; height: fit-content;" @click="onSubmit()">click</button>
-    </p>
-  </div>
 </template>
 
-<style scoped></style>

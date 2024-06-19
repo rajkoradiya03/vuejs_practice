@@ -12,6 +12,19 @@ watch(x, (newX)=>{
 //   console.log(x.value + " in watcherview");
 // })
 
+const sum = computed(()=>{
+  return x.value + y.value;
+})
+
+let sumWatcher = ref(0)
+// watch(x, (newValue, oldValue)=>{
+//   sumWatcher = newValue + y.value
+// })
+
+watchEffect(()=>{
+  sumWatcher = x.value + y.value
+})
+
 watch(
   ()=> x.value + y.value,
   (sum)=>{
@@ -44,12 +57,26 @@ watchEffect(async()=>{
 
 </script>
 <template>
-  <div>
-    <p>{{ x }}</p>
+  <div class="general-container">
+    watcher view
+    <br>
+    <div>
+      <p>{{ x }}</p>
+    </div>
+  
+    <!-- difference between computed and watcher -->
+    <div>
+      <p>
+        Computed Sum: {{ sum }} 
+      </p>
+      <p>
+        Watcher sum: {{ sumWatcher }}
+      </p>
+    </div>
+  
+    <button @click="x++">increse X</button>
+    <button @click="y++">increse Y</button>
   </div>
 </template>
 
 
-<style scoped>
-
-</style>

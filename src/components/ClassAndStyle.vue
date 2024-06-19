@@ -24,17 +24,21 @@ function even(numbers) {
 }
 </script>
 <template>
-  <p
-    :class="[classObj, $attrs.class]"
-    :style="{ 'font-size': fontSize + 'px' }"
-  >
-    Dynamic Class Binding
-  </p>
-  <p :class="$attrs.class">Another root element</p>
-  <br />
-  <ul v-for="numbers in sets" :key="numbers">
-    <li v-for="n in even(numbers)" :key="n">{{ n }}</li>
-  </ul>
+  <div class="general-container">
+    class style view
+    <br>
+    <p
+      :class="[classObj, $attrs.class]"
+      :style="{ 'font-size': fontSize + 'px' }"
+    >
+      Dynamic Class Binding
+    </p>
+    <p :class="$attrs.class">Another root element</p>
+    <br />
+    <ul v-for="numbers in sets" :key="numbers">
+      <li v-for="n in even(numbers)" :key="n">{{ n }}</li>
+    </ul>
+  </div>
   <!-- <button @click="ItemRemove()">Remove</button> -->
 </template>
 

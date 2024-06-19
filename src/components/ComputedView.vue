@@ -25,7 +25,7 @@ function newObj2(){
 
 const firstName = ref('Raj')
 const lastName = ref('Koradiya')
-
+const FN = ref('')
 
 const fullName = computed({
   get(){
@@ -33,7 +33,7 @@ const fullName = computed({
   },
 
   set(newValue){
-    [firstName.value, lastName.value] = newValue.split('') 
+    [firstName.value, lastName.value] = newValue.split(' ') 
   }
 })
 
@@ -50,13 +50,17 @@ const y = computed({
 </script>
 
 <template>
-  <div>
+  <div class="general-container">
+    computed view 
+    <br>
     <button @click="count++">{{ count }}</button>
     <p>Name Auther Has Publish Book:</p>
     <p>{{ newObj }}</p>
     <p>{{ newObj2() }}</p>
-    <input v-model="firstName">
-    <input v-model="lastName">
+    <input v-model="FN">
+    <button @click="fullName = FN">change name</button>
+    <p>{{ firstName }}</p>
+    <p>{{ lastName }}</p>
     <h2>{{ fullName }}</h2>
 
     <span>{{ x }} & {{ y }}</span>

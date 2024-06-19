@@ -63,45 +63,49 @@ function addTodo(){
   <ClassAndStyle :class="{container: container}"/>
   <!-- This is use 'Mustache' syntex for data binding -->
 
-  <h2>This message from main app component. {{ msg }}</h2>
-  <!-- Using v-html for direct v-html content binding. -->
-  <p v-html="rawHTML" style="color: teal; font-weight: 700;" ></p>
-
-  <!-- use v-bind directive for binding HTML attribute -->
-  <p v-bind:id="count">count: {{ countNum }} </p>
-  <!-- use require('image path') for disply image dynamic -->
-  <img :src="imagUrl" alt="image">
-  <!-- <img src="../public/image.jpg" alt="image" :width="width" :height="height"> -->
-  <!-- use shorthand syntax for binding -->
-  <p :id="count">Bind id using shorthand </p>
-
-  <!-- same name shorthand -->
-  <p :style="style">This is same name shorthand</p>
-
-  <!-- boolean attribute -->
-  <button :disabled="isTrue" v-on:click="isTrue = !isTrue">Click</button>
-  <input type="radio" value="Radio1" :checked="isTrue"><label for="radio1" >Radio 1</label>
-
-  <br>
-  <br>
-
-  <!-- dynamic binding multiple attributes -->
-  <div v-bind="obj"></div>
-
-  <!-- v-if directives -->
-
-  <p v-if="isTrue" @click="isTrue = !isTrue" >V-if directives</p>
-
-  <br>
-  <!-- dynamic attributes -->
-  <a :[attributeName]="url" target="_blank">Vue js official site</a>
-  <input ref="text" >
-
-  <p>{{ test }}</p>
-  <button @click="increse()">{{ test }}</button>
-  <br>
-  <br>
-  <TestView v-if="isTrue"></TestView>
+  <div class="general-container">
+    app view
+    <br>
+    <h2>This message from main app component. {{ msg }}</h2>
+    <!-- Using v-html for direct v-html content binding. -->
+    <p v-html="rawHTML" style="color: teal; font-weight: 700;" ></p>
+  
+    <!-- use v-bind directive for binding HTML attribute -->
+    <p v-bind:id="count">count: {{ countNum }} </p>
+    <!-- use require('image path') for disply image dynamic -->
+    <img :src="imagUrl" alt="image">
+    <!-- <img src="../public/image.jpg" alt="image" :width="width" :height="height"> -->
+    <!-- use shorthand syntax for binding -->
+    <p :id="count">Bind id using shorthand </p>
+  
+    <!-- same name shorthand -->
+    <p :style="style">This is same name shorthand</p>
+  
+    <!-- boolean attribute -->
+    <button :disabled="isTrue" v-on:click="isTrue = !isTrue">Click</button>
+    <input type="radio" value="Radio1" :checked="isTrue"><label for="radio1" >Radio 1</label>
+  
+    <br>
+    <br>
+  
+    <!-- dynamic binding multiple attributes -->
+    <div v-bind="obj"></div>
+  
+    <!-- v-if directives -->
+  
+    <p v-if="isTrue" @click="isTrue = !isTrue" >V-if directives</p>
+  
+    <br>
+    <!-- dynamic attributes -->
+    <a :[attributeName]="url" target="_blank">Vue js official site</a>
+    <input ref="text" >
+  
+    <p>{{ test }}</p>
+    <button @click="increse()">{{ test }}</button>
+    <br>
+    <br>
+    <TestView v-if="isTrue"></TestView>
+  </div>
 
   <br>
   <br>
@@ -116,7 +120,7 @@ function addTodo(){
   <hr>
 
   <!-- simple todo -->
-  <div>
+  <div class="general-container">
     <form @submit.prevent="addTodo">
       <label for="todo">ToDo :</label>
       <input type="text" name="todo" id="todo" v-model="newTODO">
@@ -155,6 +159,11 @@ function addTodo(){
   color: #2c3e50;
   margin-top: 60px;
 }
+.general-container{
+  border: 1px solid teal;
+  padding: 8px;
+  margin: 10px;
+}
 </style>
 
 <style scoped>
@@ -162,4 +171,5 @@ button {
   padding: 5px 15px;
   font-size: 20px;
 }
+
 </style>
