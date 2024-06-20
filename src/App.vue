@@ -1,153 +1,35 @@
 <script setup>
-import { onMounted, onUnmounted, ref } from "vue";
-import TestView from "./components/TestView.vue";
-import CountFirst from './components/CountFirst.vue'
-import CountSecond from './components/CountSecond.vue';
-import UserView from './components/UserView.vue'
-import RefReactive from './components/RefReactive.vue'
-import ClassAndStyle from './components/ClassAndStyle.vue'
-import EventView from "./components/EventView.vue";
-import ToDoView from './components/ToDoView.vue'
-import ComputedView from './components/ComputedView.vue'
-import WatcherView from './components/WatcherView.vue'
-import WatcherAndWatcheffect from './components/WatcherAndWatcheffect.vue'
-const msg = 'Hello'
-const rawHTML = 'V-html HTML attribute binding'
-const countNum = 0
-const count = 'countId'
-const imagUrl = require('../public/image.jpg')
-const style = 'font-size:25px;'
-const isTrue = ref(true)
-
-let test = ref(100)
-
-function increse(){
-  test.value++;
-}
-const obj = {
-  id: "div-container",
-  style: "border: 1px solid black; border-radius:50%; background-color:teal; width:100px; height:100px; margin:auto;  "
-}
-const attributeName = "href";
-const url = 'https://vuejs.org/'
-
-const text = ref(null)
-
-const onLoad = ()=>{
-    text.value.focus()
-    console.log("On Mounted hook called!!!");
-}
-
-onMounted(onLoad)
-
-const container = ref(true);
-
-const newTODO = ref('')
-let todoIndex = 0;
-
-const todos = ref([])
-
-function addTodo(){
-  todos.value.push({
-    id: todoIndex++,
-    title: newTODO.value
-  })
-
-  newTODO.value = ''
-}
+import { useRoute, useRouter } from "vue-router";
+const route = useRoute();
+const router = useRouter();
 </script>
 
 <template>
-  <EventView />
-  <RefReactive v-if="container"/>
-  <ClassAndStyle :class="{container: container}"/>
-  <!-- This is use 'Mustache' syntex for data binding -->
-
-  <div class="general-container">
-    app view
-    <br>
-    <h2>This message from main app component. {{ msg }}</h2>
-    <!-- Using v-html for direct v-html content binding. -->
-    <p v-html="rawHTML" style="color: teal; font-weight: 700;" ></p>
-  
-    <!-- use v-bind directive for binding HTML attribute -->
-    <p v-bind:id="count">count: {{ countNum }} </p>
-    <!-- use require('image path') for disply image dynamic -->
-    <img :src="imagUrl" alt="image">
-    <!-- <img src="../public/image.jpg" alt="image" :width="width" :height="height"> -->
-    <!-- use shorthand syntax for binding -->
-    <p :id="count">Bind id using shorthand </p>
-  
-    <!-- same name shorthand -->
-    <p :style="style">This is same name shorthand</p>
-  
-    <!-- boolean attribute -->
-    <button :disabled="isTrue" v-on:click="isTrue = !isTrue">Click</button>
-    <input type="radio" value="Radio1" :checked="isTrue"><label for="radio1" >Radio 1</label>
-  
-    <br>
-    <br>
-  
-    <!-- dynamic binding multiple attributes -->
-    <div v-bind="obj"></div>
-  
-    <!-- v-if directives -->
-  
-    <p v-if="isTrue" @click="isTrue = !isTrue" >V-if directives</p>
-  
-    <br>
-    <!-- dynamic attributes -->
-    <a :[attributeName]="url" target="_blank">Vue js official site</a>
-    <input ref="text" >
-  
-    <p>{{ test }}</p>
-    <button @click="increse()">{{ test }}</button>
-    <br>
-    <br>
-    <TestView v-if="isTrue"></TestView>
-  </div>
-
-  <br>
-  <br>
-  <CountFirst />
-  <CountSecond />
-
-  <br>
-  <br>
-  <UserView />
-
-  <br>
-  <hr>
-
-  <!-- simple todo -->
-  <div class="general-container">
-    <form @submit.prevent="addTodo">
-      <label for="todo">ToDo :</label>
-      <input type="text" name="todo" id="todo" v-model="newTODO">
-      <button>ADD</button>
-    </form>
-
-    <ul>
-      <to-do-view 
-        v-for="(todo, index) in todos"
-        :key="todo.id"
-        :title="todo.title"
-        @remove="todos.splice(index,1)"
-      ></to-do-view>
+  <nav>
+    <ul class="nav-bar">
+      <li><router-link to="/">FirstView</router-link></li>
+      <li><router-link :to="{ name: 'test' }">TestView</router-link></li>
+      <li><router-link to="/countview">CountView</router-link></li>
+      <li><router-link to="/userview">UserView</router-link></li>
+      <li>
+        <router-link to="/refreactiveview">RefAndReactiveView</router-link>
+      </li>
+      <li>
+        <router-link to="/classandstyleview">classandstyleview</router-link>
+      </li>
+      <li><router-link to="/eventview">EventView</router-link></li>
+      <li><router-link to="/todoview">TodoView</router-link></li>
+      <li><router-link to="/computedview">ComputedView</router-link></li>
+      <li><router-link to="/watcherview">WatcherView</router-link></li>
+      <li>
+        <router-link to="/watcherandwatcheffectview"
+          >watcherandwatcheffectview</router-link
+        >
+      </li>
     </ul>
-  </div>
-  <!-- Computed Properties -->
+  </nav>
 
-   <ComputedView />
-
-   <!-- Watchers -->
-
-    <WatcherView />
-
-    <br>
-    <br>
-    <hr>
-    <WatcherAndWatcheffect />
+  <router-view></router-view>
 </template>
 
 <style>
@@ -159,10 +41,34 @@ function addTodo(){
   color: #2c3e50;
   margin-top: 60px;
 }
-.general-container{
+.general-container {
   border: 1px solid teal;
   padding: 8px;
   margin: 10px;
+}
+
+.nav-bar {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+}
+
+li {
+  display: flex;
+  gap: 10px;
+  border: 1px solid teal;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+li:active {
+  background-color: cadetblue;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+  color: black;
 }
 </style>
 
@@ -171,5 +77,4 @@ button {
   padding: 5px 15px;
   font-size: 20px;
 }
-
 </style>

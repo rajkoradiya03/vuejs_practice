@@ -1,16 +1,17 @@
 <script setup>
-import { reactive, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 
 // const active = ref(true)
 // const hasError = ref(true)
 
-const classObj = reactive({
-  active: true,
-  valid: true,
+const getClasses = computed(() => {
+  return {
+    active: true,
+    valid: true,
+  };
 });
 
 const fontSize = ref(25);
-
 // const render = ref(false);
 
 // const parentMessage = ref('Parent')
@@ -26,11 +27,8 @@ function even(numbers) {
 <template>
   <div class="general-container">
     class style view
-    <br>
-    <p
-      :class="[classObj, $attrs.class]"
-      :style="{ 'font-size': fontSize + 'px' }"
-    >
+    <br />
+    <p :class="getClasses" :style="{ 'font-size': fontSize + 'px' }">
       Dynamic Class Binding
     </p>
     <p :class="$attrs.class">Another root element</p>
