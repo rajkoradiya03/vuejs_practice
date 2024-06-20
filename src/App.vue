@@ -53,18 +53,6 @@ const router = useRouter();
   justify-content: space-between;
 }
 
-li {
-  display: flex;
-  gap: 10px;
-  border: 1px solid teal;
-  padding: 5px;
-  border-radius: 10px;
-}
-
-li:active {
-  background-color: cadetblue;
-}
-
 a {
   text-decoration: none;
   outline: none;
@@ -76,5 +64,17 @@ a {
 button {
   padding: 5px 15px;
   font-size: 20px;
+}
+
+li {
+  display: flex;
+  gap: 10px;
+  border: 1px solid teal;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+li:active {
+  background-color: cadetblue;
 }
 </style>
